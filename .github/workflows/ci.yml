@@ -74,7 +74,6 @@ jobs:
           toolchain: nightly
       - name: rustdoc
         run: |
-          cd hal
           cargo +nightly rustdoc \
           --all-features \
           -- -Z unstable-options --enable-index-page

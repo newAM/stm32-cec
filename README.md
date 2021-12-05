@@ -9,7 +9,7 @@ This has been tested on the STM32H7, but it should also work for other chips tha
 
 ## Status
 
-This will not be actively maintained.
+This will not be actively maintained, and this does not exist on crates.io.
 
 At the time I wrote this there were no other HDMI CEC drivers written in rust, I uploaded this for other people to reference.
 
