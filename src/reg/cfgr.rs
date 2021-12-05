@@ -3,14 +3,29 @@
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 #[repr(u8)]
 pub enum Sft {
+    /// Determined by transmission history.
+    ///
+    /// * 2.5 data-bit periods if CEC is the last bus initiator with
+    ///   unsuccessful transmission
+    ///   (ARBLST = 1, TXERR = 1, TXUDR = 1 or TXACKE = 1)
+    /// * 4 data-bit periods if CEC is the new bus initiator
+    /// * 6 data-bit periods if CEC is the last bus initiator with successful
+    ///   transmission (TXEOM = 1)
     History = 0x0,
+    /// 0.5 nominal data bit periods
     Nom0pt5 = 0x1,
-    Num1pt5 = 0x2,
-    Num2pt5 = 0x3,
-    Num3pt5 = 0x4,
-    Num4pt5 = 0x5,
-    Num5pt5 = 0x6,
-    Num6pt5 = 0x7,
+    /// 1.5 nominal data bit periods
+    Nom1pt5 = 0x2,
+    /// 2.5 nominal data bit periods
+    Nom2pt5 = 0x3,
+    /// 3.5 nominal data bit periods
+    Nom3pt5 = 0x4,
+    /// 4.5 nominal data bit periods
+    Nom4pt5 = 0x5,
+    /// 5.5 nominal data bit periods
+    Nom5pt5 = 0x6,
+    /// 6.5 nominal data bit periods
+    Nom6pt5 = 0x7,
 }
 
 /// Configuration register.
