@@ -1,5 +1,7 @@
 # STM32 HDMI CEC
 
+[![CI](https://github.com/newAM/stm32-cec/workflows/CI/badge.svg)](https://github.com/newAM/stm32-cec/actions?query=branch%3Amain)
+
 HDMI CEC driver for STM32 microcontrollers.
 
 This has been tested on the STM32H7, but it should also work for other chips that have this peripheral.
