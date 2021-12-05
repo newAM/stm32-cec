@@ -1,0 +1,19 @@
+[package]
+name = "stm32-cec"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/newAM/stm32-cec"
+description = "HDMI CEC driver for STM32 microcontrollers"
+readme = "README.md"
+keywords = ["hdmi", "cec", "driver", "embedded-hal-driver"]
+categories = ["embedded", "hardware-support", "no-std"]
+homepage = "https://github.com/newAM/stm32-cec"
+
+[dependencies.defmt]
+version = "0.3"
+optional = true
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
