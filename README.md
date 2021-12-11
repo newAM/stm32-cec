@@ -9,7 +9,7 @@ This has been tested on the STM32H7, but it should also work for other chips tha
 
 ## Status
 
-This will not be actively maintained, and this does not exist on crates.io.
+I do not have the means to maintain this crate. My home theater setup is excetpionally basic, consisting of a TV and a PC. This limits my ability to test any changes.
 
 At the time I wrote this there were no other HDMI CEC drivers written in rust, I uploaded this for other people to reference.
 

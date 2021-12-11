@@ -33,66 +33,80 @@ pub mod irq {
     pub const TXUDR: u32 = 1 << 10;
     /// End of transmission
     ///
-    /// TXEND is set by hardware to inform application that the last byte of the CEC message has been
-    /// successfully transmitted. TXEND clears the TXSOM and TXEOM control bits.
-    /// TXEND is cleared by software write at 1.
+    /// TXEND is set by hardware to inform application that the last byte of the
+    /// CEC message has been successfully transmitted.
+    /// TXEND clears the TXSOM and TXEOM control bits.
     pub const TXEND: u32 = 1 << 9;
     /// TX-byte request
     ///
-    /// TXBR is set by hardware to inform application that the next transmission data has to be written to
-    /// TXDR. TXBR is set when the 4th bit of currently transmitted byte is sent. Application must write the
-    /// next byte to TXDR within six nominal data-bit periods before transmission underrun error occurs
-    /// (TXUDR).
+    /// TXBR is set by hardware to inform application that the next transmission
+    /// data has to be written to TXDR.
+    /// TXBR is set when the 4th bit of currently transmitted byte is sent.
+    /// Application must write the next byte to TXDR within six nominal data-bit
+    /// periods before transmission underrun error occurs (TXUDR).
     pub const TXBR: u32 = 1 << 8;
     /// Arbitration lost
     ///
-    /// ARBLST is set by hardware to inform application that CEC device is switching to reception due to
-    /// arbitration lost event following the TXSOM command. ARBLST can be due either to a contending
-    /// CEC device starting earlier or starting at the same time but with higher HEADER priority. After
-    /// ARBLST assertion TXSOM bit keeps pending for next transmission attempt
+    /// ARBLST is set by hardware to inform application that CEC device is
+    /// switching to reception due to arbitration lost event following the TXSOM
+    /// command.
+    /// ARBLST can be due either to a contending CEC device starting earlier or
+    /// starting at the same time but with higher HEADER priority.
+    /// After ARBLST assertion TXSOM bit keeps pending for next transmission
+    /// attempt.
     pub const ARBLST: u32 = 1 << 7;
     /// RX-missing acknowledge.
     ///
-    /// In receive mode, RXACKE is set by hardware to inform application that no acknowledge was seen
-    /// on the CEC line. RXACKE applies only for broadcast messages and in listen mode also for not
-    /// directly addressed messages (destination address not enabled in OAR). RXACKE aborts message
-    /// reception.
+    /// In receive mode, RXACKE is set by hardware to inform application that no
+    /// acknowledge was seen on the CEC line.
+    /// RXACKE applies only for broadcast messages and in listen mode also for
+    /// not directly addressed messages (destination address not enabled in OAR).
+    /// RXACKE aborts message reception.
     pub const RXACK: u32 = 1 << 6;
     /// RX-long bit period error
     ///
-    /// LBPE is set by hardware in case a data-bit waveform is detected with long bit period error. LBPE is
-    /// set at the end of the maximum bit-extension tolerance allowed by RXTOL, in case falling edge is still
-    /// longing. LBPE always stops reception of the CEC message. LBPE generates an error-bit on the
-    /// CEC line if LBPEGEN = 1. In case of broadcast, error-bit is generated even in case of
-    /// LBPEGEN = 0.
+    /// LBPE is set by hardware in case a data-bit waveform is detected with
+    /// long bit period error.
+    /// LBPE is set at the end of the maximum bit-extension tolerance allowed by
+    /// RXTOL, in case falling edge is still longing.
+    /// LBPE always stops reception of the CEC message.
+    /// LBPE generates an error-bit on the CEC line if LBPEGEN = 1.
+    /// In case of broadcast, error-bit is generated even in case of LBPEGEN = 0.
     pub const LBPE: u32 = 1 << 5;
     /// RX-short bit period error
     ///
-    /// SBPE is set by hardware in case a data-bit waveform is detected with short bit period error. SBPE is
-    /// set at the time the anticipated falling edge occurs. SBPE generates an error-bit on the CEC line.
+    /// SBPE is set by hardware in case a data-bit waveform is detected with
+    /// short bit period error.
+    /// SBPE is set at the time the anticipated falling edge occurs.
+    /// SBPE generates an error-bit on the CEC line.
     pub const SBPE: u32 = 1 << 4;
     /// RX-bit rising error
     ///
-    /// BRE is set by hardware in case a data-bit waveform is detected with bit rising error. BRE is set either
-    /// at the time the misplaced rising edge occurs, or at the end of the maximum BRE tolerance allowed
-    /// by RXTOL, in case rising edge is still longing. BRE stops message reception if BRESTP = 1. BRE
-    /// generates an error-bit on the CEC line if BREGEN = 1.
+    /// BRE is set by hardware in case a data-bit waveform is detected with bit
+    /// rising error.
+    /// BRE is set either at the time the misplaced rising edge occurs, or at
+    /// the end of the maximum BRE tolerance allowed by RXTOL, in case rising
+    /// edge is still longing.
+    /// BRE stops message reception if BRESTP = 1.
+    /// BRE generates an error-bit on the CEC line if BREGEN = 1.
     pub const BRE: u32 = 1 << 3;
     /// RX-overrun
     ///
-    /// RXOVR is set by hardware if RXBR is not yet cleared at the time a new byte is received on the CEC
-    /// line and stored into RXD. RXOVR assertion stops message reception so that no acknowledge is
-    /// sent. In case of broadcast, a negative acknowledge is sent.
+    /// RXOVR is set by hardware if RXBR is not yet cleared at the time a new
+    /// byte is received on the CEC line and stored into RXD.
+    /// RXOVR assertion stops message reception so that no acknowledge is sent.
+    /// In case of broadcast, a negative acknowledge is sent.
     pub const RXOVR: u32 = 1 << 2;
     /// End of reception
     ///
-    /// RXEND is set by hardware to inform application that the last byte of a CEC message is received
-    /// from the CEC line and stored into the RXD buffer. RXEND is set at the same time of RXBR.
+    /// RXEND is set by hardware to inform application that the last byte of a
+    /// CEC message is received from the CEC line and stored into the RXD buffer.
+    /// RXEND is set at the same time of RXBR.
     pub const RXEND: u32 = 1 << 1;
     /// RX-byte received
     ///
-    /// The RXBR bit is set by hardware to inform application that a new byte has been received from the
-    /// CEC line and stored into the RXD buffer
+    /// The RXBR bit is set by hardware to inform application that a new byte
+    /// has been received from the CEC line and stored into the RXD buffer.
     pub const RXBR: u32 = 1;
 
     /// Bitmask of all interrupts.
