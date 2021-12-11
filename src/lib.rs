@@ -248,6 +248,12 @@ impl<const BASE: usize> Cec<BASE> {
     /// 4. The HDMI CEC registers provided by the PAC should be dropped.
     /// 5. The generic BASE parameter must be correct or bad things will happen.
     ///
+    /// # Panics
+    ///
+    /// Panics if reading CFGR does not return the value written.
+    /// This occurs when the HDMI CEC peripheral clocks are not configured
+    /// correctly.
+    ///
     /// # Example
     ///
     /// ```no_run
