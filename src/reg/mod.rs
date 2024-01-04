@@ -1,7 +1,7 @@
 mod cfgr;
 mod cr;
 
-pub use cfgr::{Cfgr, Sft};
+pub use cfgr::Cfgr;
 pub use cr::Cr;
 
 /// HDMI-CEC register access.
