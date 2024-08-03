@@ -127,6 +127,7 @@ pub mod irq {
 
 /// Physical Address
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
+#[allow(dead_code)]
 pub struct PhysAddr {
     addr: u32,
 }
