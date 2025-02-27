@@ -296,7 +296,7 @@ impl<const BASE: usize> Cec<BASE> {
     }
 
     fn send_byte(&mut self, src: LogiAddr, dst: LogiAddr, data: u8) -> Result<(), u32> {
-        self.regs.set_txdr(u8::from(src) << 4 | u8::from(dst));
+        self.regs.set_txdr((u8::from(src) << 4) | u8::from(dst));
         self.regs.set_cr(Cr::SOM);
 
         let isr: u32 = Self::poll_isr();
